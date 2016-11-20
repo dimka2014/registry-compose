@@ -1,0 +1,12 @@
+version: '2'
+services:
+  registry:
+    restart: always
+    image: registry:2
+    environment:
+      - REGISTRY_AUTH=htpasswd
+      - REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd
+      - REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm
+    volumes:
+      - ./data:/var/lib/registry
+      - ./auth:/auth
